@@ -1,4 +1,3 @@
-
 const express = require('express');
 const helmet = require('helmet')
 const morgan = require('morgan');
@@ -21,8 +20,6 @@ consign()
     .include('routes')
     .into(app)
 
-const PORT = process.env.PORT
-
-app.listen(PORT, () => {
-    console.log(`Express started at http://localhost:${PORT}...`)
+app.listen(process.env.PORT, () => {
+    console.log(`Express started at http://localhost:${process.env.PORT}...`)
 })

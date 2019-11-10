@@ -1,0 +1,37 @@
+GetAllStates :
+    Method: GET
+    URL: localhost:3001/state
+    parametros: null
+
+GetCityByState :
+    Method: GET
+    URL: localhost:3001/city/:id_state
+    parametros: Parans : id_state
+                Headers : null
+                Query: null
+
+createUserDefault : 
+    Method: POST
+    URL: localhost:3001/api/v1/user
+    parametros: BODY : User Object
+
+    user Object : {
+        userName: requestBody.userName,
+        userType: requestBody.userType,
+        docNumber: requestBody.docNumber,
+        address: requestBody.endereco,
+        contact: requestBody.contato
+    }
+    address object : {
+        zipCode : requestBody.cep,
+        street : requestBody.logradouro,
+        number : requestBody.numero,
+        complement : requestBody.complemento,
+        neighborhood : requestBody.bairro,
+        id_city : requestBody.id_cidade
+    }
+    contact object : {
+        fone1 : requestBody.fone1,
+        fone2 : requestBody.fone2,
+        email : requestBody.email
+    }

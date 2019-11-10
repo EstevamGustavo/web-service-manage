@@ -1,14 +1,18 @@
 'use strict'
 
 // const router = require('router')
-const Client = require('../controller/client')
+const state_city = require('../controller/stateCity')
+const user = require('../controller/user')
 
 
 module.exports = api => {
 
-    api.route('/client')
-        .post(Client.createClient)
+    api.route('/api/v1/user')
+        .post(user.createUserDefault)
 
+    api.route('/state')
+        .get(state_city.getAllStates)
+
+    api.route('/city/:id')
+        .get(state_city.getCityByState)
 }
-
-console.log();
