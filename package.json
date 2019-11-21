@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "directories": {
+        "teste": "mocha"
+    },
     "scripts": {
         "start": "nodemon index.js",
         "dev": "nodemon dev.js",
