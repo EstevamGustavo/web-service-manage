@@ -1,19 +1,25 @@
-const crypto = require('crypto')
+const crypto = require('crypto-js')
 const jwt = require('jsonwebtoken');
 
-module.exports.security = {
+module.exports = {
     encrypt: (message) => {
-        return crypto.sha512.encrypt(message, "secret")
+        return crypto.SHA512(message.nome).toString(crypto.enc.Hex)
     },
-    decrypt: (hash) => {
-        return crypto.sha512.decrypt(hash, "secret")
+    compareHash: (hash, payload) => {
+        let compare = false
+        let hashCompare = crypto.SHA512(payload.nome).toString(crypto.enc.Hex)
+
+        if (hash === hashCompare) {
+            compare = true;
+        }
+        return compare
     },
-    tokenSign: (user) => {
-        return jwt.sign(user, "secret")
+    tokenSign: (user, secret) => {
+        return jwt.sign(user, secret)
     },
-    tokenValidate: (token) => {
-        return jwt.verify(token, "secret", (err, decoded) => {
-            console.log(err);
+    tokenValidate: (token, secret) => {
+        return jwt.verify(token, secret, (err, decoded) => {
+            return decoded
         })
     }
 }

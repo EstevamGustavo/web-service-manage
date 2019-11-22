@@ -1,6 +1,6 @@
 'use strict'
 const db = require('../config/connection.js')
-//isso é um comentario
+    //isso é um comentario
 module.exports = {
     createUserDefault: async(user, res) => {
         let response = await db.connection()
