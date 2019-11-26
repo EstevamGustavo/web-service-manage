@@ -1,0 +1,1 @@
+gcloud function deploy pi_project --trigger-http --project pi-project

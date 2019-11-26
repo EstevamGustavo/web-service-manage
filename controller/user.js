@@ -3,13 +3,15 @@ const userModel = require('../model/user')
 
 module.exports = {
     createUserDefault: async(req, res) => {
-        //console.log(req.body);
-        //res.send("Ok Response 201")
-
-        let userDefault = formatUser(req.body)
+        let userDefault = req.body
+        console.log(req.body);
+        
         userModel.createUserDefault(userDefault, res)
+        res.send("ok response")
     },
     getAll: async(req, res) => {
+        console.log("teste");
+        res.send("ok")
 
     }
 

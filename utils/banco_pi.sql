@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `end_numero` varchar(10) DEFAULT NULL,
   `end_complemento` varchar(50) DEFAULT NULL,
   `end_bairro` varchar(150) DEFAULT NULL,
+  `end_cep` varchar(150) DEFAULT NULL,
   `end_id_municipios` int(11) DEFAULT NULL,
   PRIMARY KEY (`end_id`),
   KEY `fk_endereco_entidade` (`end_id_entidade`),
