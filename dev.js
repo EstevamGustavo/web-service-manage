@@ -1,5 +1,4 @@
-const express = require('serverless-express/express')
-const handler = require('serverless-express/handler')
+const express = require('express');
 const helmet = require('helmet')
 const morgan = require('morgan');
 const cors = require('cors');
@@ -25,4 +24,4 @@ app.listen(process.env.PORT, () => {
     console.log(`Express started at http://localhost:${process.env.PORT}...`)
 })
 
-module.exports.api_project = app 
+module.exports.piWebService = app
