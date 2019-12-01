@@ -8,9 +8,11 @@ const product = require('../controller/product')
 
 module.exports = api => {
 
+    api.route("/")
+    .get(user.getAll)
+
     api.route('/api/v1/user')
-        .post(user.createUserDefault)
-        .get(user.getAll)
+        .get(user.nada)
 
     api.route('/api/v1/state')
         .get(state_city.getAllStates)

@@ -13,6 +13,9 @@ module.exports = {
         console.log("teste");
         res.send("ok")
 
+    },
+    nada: async (req, res) => {
+        res.send("deu")
     }
 
 }
