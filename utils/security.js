@@ -2,13 +2,12 @@ const crypto = require('crypto-js')
 const jwt = require('jsonwebtoken');
 
 module.exports = {
-    encrypt: (message) => {
-        return crypto.SHA512(message.nome).toString(crypto.enc.Hex)
+    encrypt: (senha) => {
+        return crypto.SHA512(senha).toString(crypto.enc.Hex)
     },
-    compareHash: (hash, payload) => {
+    compareHash: (hash, senha) => {
         let compare = false
-        let hashCompare = crypto.SHA512(payload.nome).toString(crypto.enc.Hex)
-
+        let hashCompare = crypto.SHA512(senha).toString(crypto.enc.Hex)
         if (hash === hashCompare) {
             compare = true;
         }

@@ -1,5 +1,4 @@
-const express = require('serverless-express/express')
-const handler = require('serverless-express/handler')
+const express = require('express');
 const helmet = require('helmet')
 const morgan = require('morgan');
 const cors = require('cors');
@@ -17,12 +16,20 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 
+app.use((req, res, next) => {
+    console.log("Called: ", req.path)
+    next()
+})
+
 consign()
     .include('routes')
     .into(app)
 
-app.listen(process.env.PORT, () => {
-    console.log(`Express started at http://localhost:${process.env.PORT}...`)
+
+
+let port = process.env.PORT || 3001
+app.listen(port, () => {
+    console.log(`Express started at http://localhost:${port}...`)
 })
 
-module.exports.piWebService = app 
+module.exports.piWebService = app

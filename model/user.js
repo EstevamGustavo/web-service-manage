@@ -15,9 +15,22 @@ module.exports = {
         let responseContact = await db.connection()
         .execute("insert into agenda (age_id_entidade, age_fone1, age_fone2, age_email) value (?,?,?,?);",
             [response[0].insertId, user.fone1, user.fone2, user.email])
-        console.log(response[0].insertId);
-        console.log(responseAddress[0].insertId);
+        let responseUser = await db.connection()
+            .execute("insert into usuario (usu_id_entidade, usu_login, usu_senha, usu_permissao) value(?,?,?,1);", 
+            [response[0].insertId, user.user, user.senha])
         
-
+            res.send("Usuario cadastrado com sucesso!!!" + response[0].insertId)
+    },
+    getAll: async(res) => {
+        let response = await db.connection()
+            .query("select * from entidade")
+        
+            res.send(response[0])
+            
+    },
+    getById: async(id, res) => {
+        let response = await db.connection()
+            .query("select * from entidade where ent_id = ?", id)
     }
+
 }

@@ -1,23 +1,19 @@
 'use strict'
 const userModel = require('../model/user')
+const crypt = require('../utils/security')
 
 module.exports = {
     createUserDefault: async(req, res) => {
         let userDefault = req.body
-        console.log(req.body);
+        console.log(userDefault);
+
+        userDefault.senha =  crypt.encrypt(userDefault.senha)
         
         userModel.createUserDefault(userDefault, res)
-        res.send("ok response")
     },
     getAll: async(req, res) => {
-        console.log("teste");
-        res.send("ok")
-
-    },
-    nada: async (req, res) => {
-        res.send("deu")
+        userModel.getAll(res)
     }
-
 }
 
 function formatUser(requestBody) {
